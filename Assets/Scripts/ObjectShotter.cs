@@ -6,22 +6,30 @@ public class ObjectShotter : MonoBehaviour {
 
 	[SerializeField]
 	float power = 1;
-
 	private Vector3 direction = new Vector3(0, -1, 0);
-	List<GameObject> foodList = new List<GameObject>();
+
+	/// <summary>
+	/// 落とす食べ物
+	/// </summary>
+	private GameObject shotFood = null;
 
 	[SerializeField]
-	Menu menu;
+	private FoodList foodList;
+
+	[SerializeField]
+	private Transform burger;
 
 	#region mono
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Shot ();
 		}
-
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			SetOrder (this.menu);
-		}
+	}
+	void OnTriggerEnter(Collider collider) {
+		shotFood = collider.gameObject;
+	}
+	void OnTriggerExit(Collider collider) {
+		shotFood = null;
 	}
 	#endregion
 
@@ -30,24 +38,13 @@ public class ObjectShotter : MonoBehaviour {
 	/// 食材を飛ばす
 	/// </summary>
 	private void Shot() {
-		if (foodList.Count > 0) {
-			GameObject _obj = (GameObject)Instantiate (foodList [0]);
-			_obj.transform.position = this.gameObject.transform.position;
+		if (shotFood != null) {
+			GameObject _obj = (GameObject)Instantiate (foodList.GetFood(shotFood.name));
+			_obj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+			_obj.transform.localPosition = new Vector3 (shotFood.transform.position.x, this.gameObject.transform.position.y, 0);
 			_obj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
-			foodList.RemoveAt (0);
+			_obj.transform.SetParent (burger);
 		}
 	}
 	#endregion
-
-	#region public function
-	/// <summary>
-	/// メニューをセットする
-	/// </summary>
-	/// <param name="menu">次のオーダー.</param>
-	public void SetOrder(Menu menu) {
-		foodList.Clear ();
-		foodList = new List<GameObject> (menu.foodList);
-	}
-	#endregion
-
 }
