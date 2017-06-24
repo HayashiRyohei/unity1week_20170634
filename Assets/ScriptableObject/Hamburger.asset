@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuName: "\u30CF\u30F3\u30D0\u30FC\u30AC\u30FC"
   foodList:
-  - {fileID: 1476248066245300, guid: 44e0c8ed2aa204d659ca53dfe3ea3584, type: 2}
-  - {fileID: 1797518158861884, guid: de6941b04ffe542148dbc6ba17d45a31, type: 2}
-  - {fileID: 1873737377375136, guid: c6210456d97654ab68842aa2d81b7490, type: 2}
-  - {fileID: 1710425426043064, guid: 3cdcf2172d1b34fc983a0f13e8804e4c, type: 2}
+  - {fileID: 1566295302695914, guid: 15d7de5f3b2ec4b37a71ee2b41ddb32f, type: 2}
+  - {fileID: 1966906152125974, guid: 5a0bd0767d40344ed8895934f9b25544, type: 2}
+  - {fileID: 1747104547962140, guid: 65ed388b0ea4248198704e3f591023d9, type: 2}
+  - {fileID: 1076863157305712, guid: 9d03b58eb127a445c9e93e916de513eb, type: 2}
