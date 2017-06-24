@@ -8,10 +8,12 @@ public class ObjectShotter : MonoBehaviour {
 	float power = 1;
 	private Vector3 direction = new Vector3(0, -1, 0);
 
+	/*
 	/// <summary>
 	/// 落とす食べ物
 	/// </summary>
 	private GameObject shotFood = null;
+	*/
 
 	[SerializeField]
 	private FoodList foodList;
@@ -28,12 +30,14 @@ public class ObjectShotter : MonoBehaviour {
 			Shot ();
 		}
 	}
+	/*
 	void OnTriggerEnter(Collider collider) {
 		shotFood = collider.gameObject;
 	}
 	void OnTriggerExit(Collider collider) {
 		shotFood = null;
 	}
+	*/
 	#endregion
 
 	#region private function
