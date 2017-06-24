@@ -19,6 +19,9 @@ public class ObjectShotter : MonoBehaviour {
 	[SerializeField]
 	private Transform burger;
 
+	[SerializeField]
+	private Reel reel;
+
 	#region mono
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
@@ -38,10 +41,20 @@ public class ObjectShotter : MonoBehaviour {
 	/// 食材を飛ばす
 	/// </summary>
 	private void Shot() {
+		/*
 		if (shotFood != null) {
 			GameObject _obj = (GameObject)Instantiate (foodList.GetFood(shotFood.name));
 			_obj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			_obj.transform.localPosition = new Vector3 (shotFood.transform.position.x, this.gameObject.transform.position.y, 0);
+			_obj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
+			_obj.transform.SetParent (burger);
+		}
+		*/
+		if (reel) {
+			var food = reel.GetNearestFood ();
+			GameObject _obj = (GameObject)Instantiate (foodList.GetFood(food.name));
+			_obj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+			_obj.transform.localPosition = new Vector3 (food.position.x, this.gameObject.transform.position.y, 0);
 			_obj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
 			_obj.transform.SetParent (burger);
 		}

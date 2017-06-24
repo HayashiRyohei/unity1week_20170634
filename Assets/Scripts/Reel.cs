@@ -50,4 +50,26 @@ public class Reel : MonoBehaviour {
 	}
 	#endregion
 
+	#region public function
+
+	/// <summary>
+	/// 最もx座標が0に近いFoodを取得する
+	/// </summary>
+	/// <returns>The nearest food.</returns>
+	public Transform GetNearestFood() {
+
+		float min = float.MaxValue;
+		float temp;
+		int minIndex = 0;
+		for (int i = 0; i < foods.Length; ++i) {
+			temp = Mathf.Abs (foods[i].position.x);
+			if (temp < min) {
+				min = temp;
+				minIndex = i;
+			}
+		}
+		return foods[minIndex];
+	}
+
+	#endregion
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -599,6 +599,7 @@ MonoBehaviour:
   power: 0.01
   foodList: {fileID: 11400000, guid: f9c4a8ac013b541bb9d3a43c16b9922a, type: 2}
   burger: {fileID: 908172822}
+  reel: {fileID: 132761832}
 --- !u!65 &950590878
 BoxCollider:
   m_ObjectHideFlags: 0
