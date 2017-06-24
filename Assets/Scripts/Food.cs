@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Food : MonoBehaviour {
 
+	[SerializeField]
+	private FoodType _type;
+
+	public FoodType type {
+		get {
+			return _type;
+		}
+	}
 
 	#region mono
 	void OnCollisionEnter(Collision coll) {

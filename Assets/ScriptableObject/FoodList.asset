@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a630db3663a8493f90f277bca145149, type: 3}
   m_Name: FoodList
   m_EditorClassIdentifier: 
-  list:
-  - {fileID: 1566295302695914, guid: 15d7de5f3b2ec4b37a71ee2b41ddb32f, type: 2}
-  - {fileID: 1076863157305712, guid: 9d03b58eb127a445c9e93e916de513eb, type: 2}
-  - {fileID: 1747104547962140, guid: 65ed388b0ea4248198704e3f591023d9, type: 2}
-  - {fileID: 1966906152125974, guid: 5a0bd0767d40344ed8895934f9b25544, type: 2}
+  foods:
+  - {fileID: 114127453048541822, guid: 15d7de5f3b2ec4b37a71ee2b41ddb32f, type: 2}
+  - {fileID: 114926267465972030, guid: 9d03b58eb127a445c9e93e916de513eb, type: 2}
+  - {fileID: 114596393133688860, guid: 65ed388b0ea4248198704e3f591023d9, type: 2}
+  - {fileID: 114330091041254194, guid: 5a0bd0767d40344ed8895934f9b25544, type: 2}
+  - {fileID: 114523954389639826, guid: d355f0d42a6594e11af9b07c4772daa9, type: 2}
+  - {fileID: 114906703551389996, guid: 5d73da5c376e94ca985e4a1e2a71794a, type: 2}

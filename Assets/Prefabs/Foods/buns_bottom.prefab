@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23572518065413826}
   - component: {fileID: 54452310136709930}
   - component: {fileID: 65136127292525256}
+  - component: {fileID: 114127453048541822}
   m_Layer: 0
   m_Name: buns_bottom
   m_TagString: Untagged
@@ -109,3 +110,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.2, z: 1}
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &114127453048541822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566295302695914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a695264e433ff4362acee77156defd58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1

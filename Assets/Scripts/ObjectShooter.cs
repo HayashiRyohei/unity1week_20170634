@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ObjectShotter : MonoBehaviour {
+public class ObjectShooter : MonoBehaviour {
+
+	public class ShotEvent : UnityEvent<float, FoodType> { }
 
 	[SerializeField]
 	float power = 1;
@@ -24,7 +27,20 @@ public class ObjectShotter : MonoBehaviour {
 	[SerializeField]
 	private Reel reel;
 
+	private ShotEvent _onShot;
+
+	public ShotEvent onShot {
+		get {
+			return _onShot;
+		}
+	}
+
 	#region mono
+
+	void Awake() {
+		_onShot = new ShotEvent();
+	}
+
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Shot ();
@@ -56,11 +72,15 @@ public class ObjectShotter : MonoBehaviour {
 		*/
 		if (reel) {
 			var food = reel.GetNearestFood ();
-			GameObject _obj = (GameObject)Instantiate (foodList.GetFood(food.name));
-			_obj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
-			_obj.transform.localPosition = new Vector3 (food.position.x, this.gameObject.transform.position.y, 0);
-			_obj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
-			_obj.transform.SetParent (burger);
+			float offset = food.position.x;
+			Food foodObj = Instantiate(foodList.GetFood(food.name));
+			foodObj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
+			foodObj.transform.localPosition = new Vector3 (offset, this.gameObject.transform.position.y, 0);
+			foodObj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
+			foodObj.transform.SetParent (burger);
+
+			// イベント
+			_onShot.Invoke(offset, foodObj.type);
 		}
 	}
 	#endregion
