@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 136a6c390c25c4f14a01ddeb4b7d0d7a
-timeCreated: 1498303227
+guid: 2dc31925749e24fcabdd6e62506622b6
+timeCreated: 1498308587
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -38,7 +38,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
