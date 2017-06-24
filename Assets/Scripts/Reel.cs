@@ -16,11 +16,18 @@ public class Reel : MonoBehaviour {
 	[SerializeField, Header("次の食材が流れるまでの時間")]
 	private float interval = 0.5f;
 
+	#region mono
 	void Start() {
 		StartCoroutine (AllMove ());
 	}
+	#endregion
 
-	IEnumerator AllMove() {
+	#region private function
+	/// <summary>
+	/// 全ての食べ物の流れ
+	/// </summary>
+	/// <returns>The move.</returns>
+	private IEnumerator AllMove() {
 		var wait = new WaitForSeconds (interval);
 		while (true) {
 			for (int i = 0; i < foods.Length; ++i) {
@@ -29,8 +36,11 @@ public class Reel : MonoBehaviour {
 			}
 		}
 	}
-
-	IEnumerator Move(Transform tran) {
+	/// <summary>
+	/// 一つの食べ物の流れ
+	/// </summary>
+	/// <param name="tran">Tran.</param>
+	private IEnumerator Move(Transform tran) {
 		float _time = 0;
 		while (_time < waitTime) {
 			_time += Time.deltaTime;
@@ -38,6 +48,6 @@ public class Reel : MonoBehaviour {
 			yield return null;
 		}
 	}
-
+	#endregion
 
 }
