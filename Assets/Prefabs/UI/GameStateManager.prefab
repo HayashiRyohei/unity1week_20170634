@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleUIPrefub: {fileID: 1993313237093298, guid: 21bb912ac1c7c4ae4b510c3ff7f91907,
     type: 2}
-  resultUIPrefub: {fileID: 1949551965200676, guid: eec863f8c0a1541cfa901c3908645cee,
+  resultUIPrefub: {fileID: 1366783653685474, guid: d938c1f8e9ecc437ab83459ff77cfff7,
     type: 2}
