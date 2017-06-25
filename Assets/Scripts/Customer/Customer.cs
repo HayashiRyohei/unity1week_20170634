@@ -29,9 +29,14 @@ public abstract class Customer : MonoBehaviour {
 			return _randomFoodCnt;
 		}
 	}
+	public Order order {
+		get {
+			return _order;
+		}
+	}
 
 	private void Awake() {
-		if(_orderfoods.Length <= 0) {
+		if(_orderfoods.Length > 0) {
 			_order = Order.MakeFromArray(_orderfoods, true);
 		} else {
 			_order = Order.MakeRandom(_randomFoodCnt);
@@ -87,11 +92,11 @@ public abstract class Customer : MonoBehaviour {
 
 		//とりあえず決め打ちで
 		int rank = 0;
-		if (sumEval > 1.2) {
+		if (sumEval > 2) {
 			rank = 3;
-		} else if (sumEval > 0.9) {
+		} else if (sumEval > 1.5) {
 			rank = 2;
-		} else if (sumEval > 0.5) {
+		} else if (sumEval > 1.2) {
 			rank = 1;
 		}
 

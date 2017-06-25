@@ -16,6 +16,15 @@ public class FoodList : ScriptableObject {
 		}
 		return null;
 	}
+
+	public Food GetFood(FoodType type) {
+		for (int i = 0; i < foods.Length; ++i) {
+			if (foods[i].type == type) {
+				return foods[i];
+			}
+		}
+		return null;
+	}
 	#endregion
 
 }
