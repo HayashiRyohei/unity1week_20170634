@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4610052260958448}
   - component: {fileID: 33745499858148550}
   - component: {fileID: 23110049079462228}
+  - component: {fileID: 111695532833187676}
   m_Layer: 0
   m_Name: 03_grateful
   m_TagString: Untagged
@@ -80,3 +81,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800202663111674}
   m_Mesh: {fileID: 4300000, guid: 46497fb518c164052846299355158405, type: 3}
+--- !u!111 &111695532833187676
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800202663111674}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: cf8ff461f68634e838a77c22ac10a98a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: cf8ff461f68634e838a77c22ac10a98a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

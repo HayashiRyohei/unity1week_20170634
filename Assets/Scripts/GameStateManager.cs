@@ -73,14 +73,17 @@ public class GameStateManager : MonoBehaviour {
 		);
 		while (true) {
 			yield return _start;
+			Camera.main.GetComponent<Gauss> ().Blur ();
 			resultUI.SetActive (false);
 			titleUI.SetActive (true);
 
 			yield return _game;
+			Camera.main.GetComponent<Gauss> ().UnBlur ();
 			titleUI.SetActive (false);
 			resultUI.SetActive (false);
 
 			yield return _result;
+			Camera.main.GetComponent<Gauss> ().Blur ();
 			titleUI.SetActive (false);
 			resultUI.SetActive (true);
 		}

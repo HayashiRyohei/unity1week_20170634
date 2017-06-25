@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 01_Interested
+  m_Name: Emotion
   serializedVersion: 6
   m_Legacy: 1
   m_Compressed: 0
@@ -25,19 +25,19 @@ AnimationClip:
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: {x: 0, y: -0.05, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: -0.01, z: 0}
+        inSlope: {x: 0, y: -0.014117647, z: 0}
+        outSlope: {x: 0, y: -0.014117647, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 1.4166666
         value: {x: 0, y: -0.02, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: -0.023999998, z: 0}
+        outSlope: {x: 0, y: -0.023999998, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 1.8333334
-        value: {x: 0, y: -0.05, z: 0}
+        value: {x: 0, y: -0.03, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -134,19 +134,19 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 1
-        value: -0.05
-        inSlope: 0
-        outSlope: 0
+        value: -0.01
+        inSlope: -0.014117647
+        outSlope: -0.014117647
         tangentMode: 136
       - serializedVersion: 2
         time: 1.4166666
         value: -0.02
-        inSlope: 0
-        outSlope: 0
+        inSlope: -0.023999998
+        outSlope: -0.023999998
         tangentMode: 136
       - serializedVersion: 2
         time: 1.8333334
-        value: -0.05
+        value: -0.03
         inSlope: 0
         outSlope: 0
         tangentMode: 136
