@@ -11,10 +11,15 @@ public class TitleUIIndicator : MonoBehaviour {
 	[SerializeField]
 	private Animator burgerAnim;
 
+	[SerializeField]
+	private ResultDataObject resultData;
+
 	void Start () {
 		startBtn.onClick.AddListener (() => {
+			AudioManager.Instance.PlaySE("se_maoudamashii_system24");
 			GameStateManager.Instance.ChangeState(GameStateManager.State.GAME);
 		});
 		burgerAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
+		resultData.Init ();
 	}	
 }

@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7572899ac49b649b0b4eb44e1822843c, type: 3}
   m_Name: SEList
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - {fileID: 8300000, guid: d04a29660c41a4c668f05f592b4d27ab, type: 3}
+  - {fileID: 8300000, guid: a63111d363ea0467083ac34a4a69ffd1, type: 3}

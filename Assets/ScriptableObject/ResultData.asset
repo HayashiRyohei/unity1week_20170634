@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7572899ac49b649b0b4eb44e1822843c, type: 3}
-  m_Name: BGMList
+  m_Script: {fileID: 11500000, guid: 5a311ca16e08b4f80a091e3578a0435a, type: 3}
+  m_Name: ResultData
   m_EditorClassIdentifier: 
-  audioList:
-  - {fileID: 8300000, guid: 2dbad1eac39f0464b98472c8ab888a70, type: 3}
-  - {fileID: 8300000, guid: 299efba9bc8e04accb1b682170f36ef3, type: 3}
+  resultList: 

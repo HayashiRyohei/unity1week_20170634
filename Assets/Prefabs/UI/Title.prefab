@@ -798,6 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBtn: {fileID: 114847450823619844}
   burgerAnim: {fileID: 95110364867919864}
+  resultData: {fileID: 11400000, guid: 3b9a051a6ebf74b51856d1c48871341d, type: 2}
 --- !u!114 &114907039632694184
 MonoBehaviour:
   m_ObjectHideFlags: 1
