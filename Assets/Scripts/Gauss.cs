@@ -24,12 +24,8 @@ public class Gauss : MonoBehaviour {
 	void Update() {
 		var deltaTime = Time.realtimeSinceStartup - prevTime;
 
-		if(Input.GetButtonDown("Pause")) {
-			_flag = !_flag;
-		}
 		if(_flag) {
 			intencity += deltaTime * 8;
-			Time.timeScale = 0;
 		} else {
 			intencity -= deltaTime * 8;
 			Time.timeScale = 1;
@@ -79,13 +75,15 @@ public class Gauss : MonoBehaviour {
 	/// ぼかす
 	/// </summary>
 	public void Blur() {
-		
+		_flag = true;
+		Time.timeScale = 0f;
 	}
 
 	/// <summary>
 	/// ぼかさない
 	/// </summary>
 	public void UnBlur() {
-		
+		_flag = false;
+		Time.timeScale = 1f;
 	}
 }

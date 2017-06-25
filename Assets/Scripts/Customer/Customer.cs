@@ -68,9 +68,9 @@ public abstract class Customer : MonoBehaviour {
 		float sum = 0f;
 		float baseOffset = offsets[0];
 		for (int i = 1; i < offsets.Count; ++i) {
-			sum += Mathf.Abs(baseOffset - offsets[i]);
+			sum += Mathf.Min(Mathf.Abs(baseOffset - offsets[i]), _maxOffset);
 		}
-		return (_maxOffset - (sum / offsets.Count)) / _maxOffset;
+		return ((_maxOffset + 0.01f) - (sum / offsets.Count)) / _maxOffset;
 	}
 
 	/// <summary>

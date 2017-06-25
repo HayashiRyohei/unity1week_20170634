@@ -65,27 +65,52 @@ public class Order {
 	}
 
 	/// <summary>
-	/// 指定した食材リストとオーダーへの達成率を返す(順不同)
+	/// 指定した食材リストとオーダーへの達成率を返す
 	/// </summary>
 	/// <returns>The match ratio.</returns>
 	/// <param name="foods">Foods.</param>
 	public float GetProgressRatio(List<FoodType> foods) {
-		var reallyCnts = new int[_foodCnts.Length];
+		var conts = new int[_foodCnts.Length];
 		int i;
 		for(i = 0; i < foods.Count; ++i) {
-			reallyCnts[(int)foods[i]]++;
+			conts[(int)foods[i]]++;
 		}
 		float eval = 0;
-		for(i = 0; i < reallyCnts.Length; ++i) {
+		for(i = 0; i < conts.Length; ++i) {
 			if(_foodCnts[i] > 0) {
-				if(reallyCnts[i] >= (_foodCnts[i])) {
+				if(conts[i] >= (_foodCnts[i])) {
 					eval += _foodCnts[i];
 				} else {
-					eval += reallyCnts[i];
+					eval += conts[i];
 				}
 			}
 		}
 		return eval / _contents.Length;
+	}
+
+	/// <summary>
+	/// バンズ以外の食材リストとオーダーへの達成率
+	/// </summary>
+	/// <returns>The match ratio ignore buns.</returns>
+	/// <param name="foods">Foods.</param>
+	public float GetProgressRatioIgnoreBuns(List<FoodType> foods) {
+		var cnts = new int[_foodCnts.Length];
+		int i;
+		for (i = 0; i < foods.Count; ++i) {
+			cnts[(int)foods[i]]++;
+		}
+		float eval = 0;
+		for (i = 0; i < cnts.Length; ++i) {
+			if (i == (int)FoodType.BunsBottom || i == (int)FoodType.BunsTop) continue;
+			if (_foodCnts[i] > 0) {
+				if (cnts[i] >= (_foodCnts[i])) {
+					eval += _foodCnts[i];
+				} else {
+					eval += cnts[i];
+				}
+			}
+		}
+		return eval / _contents.Length - 2;
 	}
 
 	/// <summary>
