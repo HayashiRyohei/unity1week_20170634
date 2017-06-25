@@ -41,7 +41,6 @@ public class GameStateManager : MonoBehaviour {
 		}
 	}
 	void Start() {
-		AudioManager.Instance.PlayBGM ("game_maoudamashii_5_town16");
 		titleUI = (GameObject)Instantiate (titleUIPrefub);
 		resultUI = (GameObject)Instantiate (resultUIPrefub);
 		resultUI.SetActive (false);
@@ -81,6 +80,7 @@ public class GameStateManager : MonoBehaviour {
 		);
 		while (true) {
 			yield return _start;
+			AudioManager.Instance.PlayBGM ("game_maoudamashii_5_town16");
 			Camera.main.GetComponent<Gauss> ().Blur ();
 			resultUI.SetActive (false);
 			gameUI.SetActive (false);
