@@ -19,6 +19,10 @@ public class ResultUIIndicator : MonoBehaviour {
 	[SerializeField]
 	private ResultDataObject resultData;
 
+	[SerializeField]
+	private Text scoreText;
+
+
 	#region mono
 	void Start () {
 		endBtn.gameObject.SetActive (false);
@@ -36,6 +40,7 @@ public class ResultUIIndicator : MonoBehaviour {
 	private IEnumerator FoodDrop() {
 		var _wait = new WaitForSeconds (0.5f);
 		int _count = 0;
+		int _score = 0;
 		Time.timeScale = 1;
 		GameObject _obj = (GameObject) Instantiate(buns_bottom);
 		_obj.layer = LayerMask.NameToLayer("TransparentFX");
@@ -47,6 +52,7 @@ public class ResultUIIndicator : MonoBehaviour {
 			_obj.layer = LayerMask.NameToLayer("TransparentFX");
 			_obj.transform.localPosition = new Vector3 (0, 1010, 0);
 			_obj.transform.localScale = new Vector3 (3, 3, 3);
+			_score += resultData.resultList [_count];
 			_count++;
 			yield return _wait;
 		}
@@ -58,6 +64,17 @@ public class ResultUIIndicator : MonoBehaviour {
 
 		yield return _wait;
 		yield return _wait;
+
+		if (_score >= 20) {
+			scoreText.text = "山の空気のような店員";
+		} else if (_score >= 15) {
+			scoreText.text = "周りが見えてるマン";
+		} else if (_score >= 10) {
+			scoreText.text = "普通な空気を読む店員";
+		} else {
+			scoreText.text = "KY店員";
+		}
+		scoreText.gameObject.SetActive (true);
 		endBtn.gameObject.SetActive (true);
 	}
 	#endregion
