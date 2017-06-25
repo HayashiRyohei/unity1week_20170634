@@ -10,7 +10,8 @@ public class ObjectShooter : MonoBehaviour {
 	[SerializeField]
 	float power = 1;
 	private Vector3 direction = new Vector3(0, -1, 0);
-
+	[SerializeField, Range(0f, 3f)]
+	private float maxOffset = 1f;
 	/*
 	/// <summary>
 	/// 落とす食べ物
@@ -72,7 +73,7 @@ public class ObjectShooter : MonoBehaviour {
 		*/
 		if (reel) {
 			var food = reel.GetNearestFood ();
-			float offset = food.position.x;
+			float offset = Mathf.Clamp(food.position.x, -maxOffset, maxOffset);
 			Food foodObj = Instantiate(foodList.GetFood(food.name));
 			foodObj.transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			foodObj.transform.localPosition = new Vector3 (offset, this.gameObject.transform.position.y, 0);
