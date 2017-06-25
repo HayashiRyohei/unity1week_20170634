@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 291826502}
-  m_IndirectSpecularColor: {r: 0.3731147, g: 0.38073885, b: 0.3587351, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731148, g: 0.3807389, b: 0.35873505, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -906,7 +906,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 908172822}
-  - component: {fileID: 908172823}
   m_Layer: 0
   m_Name: Burger
   m_TagString: Untagged
@@ -927,17 +926,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &908172823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 908172821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caae4bf620ce24b5d9e009057b6d3ca5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &950590873 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1245465925826774, guid: 011e11c8447754d14b9713e5942ee706,
@@ -1753,6 +1741,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114213765230246340, guid: 48c6d6111c77e42329058e6f814c1b9d,
+        type: 2}
+      propertyPath: gameUI
+      value: 
+      objectReference: {fileID: 1410767782}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48c6d6111c77e42329058e6f814c1b9d, type: 2}
   m_IsPrefabParent: 0

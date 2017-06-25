@@ -28,6 +28,9 @@ public class GameStateManager : MonoBehaviour {
 
 	private GameObject titleUI;
 	private GameObject resultUI;
+	[SerializeField]
+	private GameObject gameUI;
+	private ObjectShooter objectShooter;
 
 	#region mono
 	void Awake () {
@@ -42,6 +45,10 @@ public class GameStateManager : MonoBehaviour {
 		titleUI = (GameObject)Instantiate (titleUIPrefub);
 		resultUI = (GameObject)Instantiate (resultUIPrefub);
 		resultUI.SetActive (false);
+		gameUI.SetActive (false);
+
+		objectShooter = GameObject.Find ("launcher").GetComponent<ObjectShooter> ();
+
 		StartCoroutine (GameStateControll ());
 	}
 	void Update() {
@@ -76,18 +83,24 @@ public class GameStateManager : MonoBehaviour {
 			yield return _start;
 			Camera.main.GetComponent<Gauss> ().Blur ();
 			resultUI.SetActive (false);
+			gameUI.SetActive (false);
 			titleUI.SetActive (true);
+			objectShooter.controllable = false;
 
 			yield return _game;
 			Camera.main.GetComponent<Gauss> ().UnBlur ();
 			titleUI.SetActive (false);
 			resultUI.SetActive (false);
+			gameUI.SetActive (true);
+			objectShooter.controllable = true;
 
 			yield return _result;
 			AudioManager.Instance.PlayBGM ("game_maoudamashii_9_jingle05");
 			Camera.main.GetComponent<Gauss> ().Blur ();
 			titleUI.SetActive (false);
+			gameUI.SetActive (false);
 			resultUI.SetActive (true);
+			objectShooter.controllable = false;
 		}
 	}
 }
