@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6154a7d4faa474da0bf871310e03476c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleUIPrefub: {fileID: 1309528411616092, guid: 4d701fc84a56f44979c053921dcf5d55,
+  titleUIPrefub: {fileID: 1993313237093298, guid: 21bb912ac1c7c4ae4b510c3ff7f91907,
     type: 2}
   resultUIPrefub: {fileID: 1949551965200676, guid: eec863f8c0a1541cfa901c3908645cee,
     type: 2}
