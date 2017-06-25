@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7572899ac49b649b0b4eb44e1822843c, type: 3}
   m_Name: BGMList
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - {fileID: 8300000, guid: 2dbad1eac39f0464b98472c8ab888a70, type: 3}

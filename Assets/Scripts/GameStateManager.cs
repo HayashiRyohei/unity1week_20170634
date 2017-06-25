@@ -38,6 +38,7 @@ public class GameStateManager : MonoBehaviour {
 		}
 	}
 	void Start() {
+		AudioManager.Instance.PlayBGM ("game_maoudamashii_5_town16");
 		titleUI = (GameObject)Instantiate (titleUIPrefub);
 		resultUI = (GameObject)Instantiate (resultUIPrefub);
 		resultUI.SetActive (false);

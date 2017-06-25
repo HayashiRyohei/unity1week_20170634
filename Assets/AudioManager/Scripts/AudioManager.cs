@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour {
 	void Awake() {
 		if (instance == null) {
 			instance = this;
+			DontDestroyOnLoad (this.gameObject);
 		} else {
 			Destroy (this.gameObject);
 		}
@@ -65,6 +66,9 @@ public class AudioManager : MonoBehaviour {
 	}
 	public void PlayBGM(string bgmName, float volume) {
 		if (bgmDict.ContainsKey(bgmName)) {
+			if (this.bgmSource.clip == bgmDict[bgmName]) {
+				return;
+			}
 			StopBGM();
 			this.bgmSource.clip = bgmDict [bgmName];
 			this.bgmSource.volume = volume * masterBGMVolume;
