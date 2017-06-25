@@ -34,6 +34,10 @@ public class Clerk : MonoBehaviour {
 	[SerializeField]
 	private ResultDataObject _resultData;
 
+	[Header("State Manager")]
+	[SerializeField]
+	private GameStateManager _stateManager;
+
 	private Customer _customer;         //現在の客
 	private BurgerData _burger;         //現在作成中のバーガー
 	private int _foodCnt;               //現在作成中のバーガーの具材の数(バンズを除いたもの)
@@ -74,6 +78,9 @@ public class Clerk : MonoBehaviour {
 			} else {
 				//客がいないので結果発表へ
 				Debug.Log("お客がいないので結果へ飛びます");
+				if (_stateManager) {
+					_stateManager.ChangeState(GameStateManager.State.RESULT);
+				}
 			}
 		} else {
 			Debug.LogError("Customer Queueへの参照が設定されていません！");

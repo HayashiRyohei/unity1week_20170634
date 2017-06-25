@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 291826502}
-  m_IndirectSpecularColor: {r: 0.3731148, g: 0.3807389, b: 0.35873505, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731147, g: 0.38073885, b: 0.3587351, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
   _initBunsPosition: {x: 0, y: 1.4, z: 0}
   _topBunsPosition: {x: 0, y: 2, z: 0}
   _resultData: {fileID: 11400000, guid: 3b9a051a6ebf74b51856d1c48871341d, type: 2}
+  _stateManager: {fileID: 920621654}
 --- !u!1 &413437190
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +928,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920621654 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114213765230246340, guid: 48c6d6111c77e42329058e6f814c1b9d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1513649393}
+  m_Script: {fileID: 11500000, guid: 6154a7d4faa474da0bf871310e03476c, type: 3}
 --- !u!1 &950590873 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1245465925826774, guid: 011e11c8447754d14b9713e5942ee706,
