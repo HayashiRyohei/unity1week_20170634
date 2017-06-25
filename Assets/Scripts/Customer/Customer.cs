@@ -8,23 +8,69 @@ using System.Collections.Generic;
 /// </summary>
 public abstract class Customer : MonoBehaviour {
 
-	[SerializeField, Range(3, 10)]
-	protected int _foodCnt = 3;
-
-	[Header("UI")]
 	[SerializeField]
-	private Text _text;
+	protected FoodType[] _orderfoods;
+	[SerializeField, Range(3, 10)]
+	protected int _randomFoodCnt = 3;
+
+	[Header("Evaluate Parameter")]
+	[SerializeField, Range(0f, 3f)]
+	protected float _maxOffset = 0.3f;	//許容できるズレの最大幅
 
 	protected Order _order;
 
-	public int foodCnt {
+	public int orderFoodCnt {
 		get {
-			return _foodCnt;
+			return _orderfoods.Length;
+		}
+	}
+	public int randomFoodCnt {
+		get {
+			return _randomFoodCnt;
 		}
 	}
 
 	private void Awake() {
-		_order = Order.MakeRandom(_foodCnt);
+		if(_orderfoods.Length <= 0) {
+			_order = Order.MakeFromArray(_orderfoods, true);
+		} else {
+			_order = Order.MakeRandom(_randomFoodCnt);
+		}
+	}
+
+	/// <summary>
+	/// 内容物の評価(0-1で評価)
+	/// </summary>
+	/// <returns>The evaluate.</returns>
+	/// <param name="foods">Foods.</param>
+	protected abstract float ContentsEvaluate(List<FoodType> foods);
+
+	/// <summary>
+	/// 見た目の評価(0-1で評価)
+	/// </summary>
+	/// <returns>The evaluate.</returns>
+	/// <param name="offsets">Offsets.</param>
+	protected abstract float VisualEvaluate(List<float> offsets);
+
+	/// <summary>
+	/// 特殊な評価(0-1で評価)
+	/// </summary>
+	/// <returns>The evaluate.</returns>
+	/// <param name="burger">Burger.</param>
+	protected abstract float SpecialEvaluate(BurgerData burger);
+
+	/// <summary>
+	/// 標準的なずれの評価。(ベースからズレの平均値)
+	/// </summary>
+	/// <returns>The visual evaluate.</returns>
+	/// <param name="offsets">Offsets.</param>
+	protected float BasicVisualEvaluate(List<float> offsets) {
+		float sum = 0f;
+		float baseOffset = offsets[0];
+		for (int i = 1; i < offsets.Count; ++i) {
+			sum += Mathf.Abs(baseOffset - offsets[i]);
+		}
+		return (_maxOffset - (sum / offsets.Count)) / _maxOffset;
 	}
 
 	/// <summary>
@@ -41,35 +87,14 @@ public abstract class Customer : MonoBehaviour {
 
 		//とりあえず決め打ちで
 		int rank = 0;
-		if(sumEval > 1.2) {
+		if (sumEval > 1.2) {
 			rank = 3;
-		} else if(sumEval > 0.9) {
+		} else if (sumEval > 0.9) {
 			rank = 2;
-		} else if(sumEval > 0.5) {
+		} else if (sumEval > 0.5) {
 			rank = 1;
 		}
 
 		return rank;
 	}
-
-	/// <summary>
-	/// 内容物の評価
-	/// </summary>
-	/// <returns>The evaluate.</returns>
-	/// <param name="foods">Foods.</param>
-	protected abstract float ContentsEvaluate(List<FoodType> foods);
-
-	/// <summary>
-	/// 見た目の評価
-	/// </summary>
-	/// <returns>The evaluate.</returns>
-	/// <param name="offsets">Offsets.</param>
-	protected abstract float VisualEvaluate(List<float> offsets);
-
-	/// <summary>
-	/// 特殊な評価
-	/// </summary>
-	/// <returns>The evaluate.</returns>
-	/// <param name="burger">Burger.</param>
-	protected abstract float SpecialEvaluate(BurgerData burger);
 }

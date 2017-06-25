@@ -4,14 +4,14 @@ using System;
 using System.Collections.Generic;
 
 /// <summary>
-/// スポーツマン
-/// 肉好き
+/// OL
+/// 野菜好き
 /// </summary>
-public class SportsMan : Customer {
+public class OfficeLady : Customer {
 
-	[Header("SportsMan Evaluate")]
+	[Header("OfficeLady Evaluate")]
 	[SerializeField, Range(0f, 1f)]
-	private float _meatAdd = 0.2f;  //オーダー以上の肉が入っていた場合の加点
+	private float _vegetableAdd = 0.2f;	//オーダー以上のレタスorトマトが入っていた場合の加点
 
 	/// <summary>
 	/// 内容物の評価(0-1で評価)
@@ -38,13 +38,13 @@ public class SportsMan : Customer {
 	/// <param name="burger">Burger.</param>
 	protected override float SpecialEvaluate(BurgerData burger) {
 		var foods = burger.foods;
-		int meatCnt = 0;
+		int vegeCnt = 0;
 		for (int i = 0; i < foods.Count; ++i) {
-			if (foods[i] == FoodType.Meat) {
-				meatCnt++;
+			if (foods[i] == FoodType.Lettuce || foods[i] == FoodType.Tomate) {
+				vegeCnt++;
 			}
 		}
 		// Meatが必要以上な場合に1を越さない範囲で
-		return Mathf.Min(1f, (meatCnt - _order.foodCnts[(int)FoodType.Meat]) * _meatAdd);
+		return Mathf.Min(1f, (vegeCnt - _order.foodCnts[(int)FoodType.Meat]) * _vegetableAdd);
 	}
 }
