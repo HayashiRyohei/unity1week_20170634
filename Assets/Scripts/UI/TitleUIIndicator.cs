@@ -13,6 +13,7 @@ public class TitleUIIndicator : MonoBehaviour {
 
 	void Start () {
 		startBtn.onClick.AddListener (() => {
+			AudioManager.Instance.PlaySE("se_maoudamashii_system24");
 			GameStateManager.Instance.ChangeState(GameStateManager.State.GAME);
 		});
 		burgerAnim.updateMode = AnimatorUpdateMode.UnscaledTime;

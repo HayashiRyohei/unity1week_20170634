@@ -23,6 +23,7 @@ public class ResultUIIndicator : MonoBehaviour {
 		endBtn.gameObject.SetActive (false);
 		endBtn.onClick.AddListener (() => {
 //			GameStateManager.Instance.ChangeState (GameStateManager.State.START);
+			AudioManager.Instance.PlaySE("se_maoudamashii_system24");
 			SceneManager.LoadScene(0);
 		});
 

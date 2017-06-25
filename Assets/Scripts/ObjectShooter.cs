@@ -79,7 +79,7 @@ public class ObjectShooter : MonoBehaviour {
 			foodObj.transform.localPosition = new Vector3 (offset, this.gameObject.transform.position.y, 0);
 			foodObj.GetComponent<Rigidbody> ().AddForce (direction * power, ForceMode.Impulse);
 			foodObj.transform.SetParent (burger);
-
+			AudioManager.Instance.PlaySE ("se_maoudamashii_retro08");
 			// イベント
 			_onShot.Invoke(offset, foodObj.type);
 		}
