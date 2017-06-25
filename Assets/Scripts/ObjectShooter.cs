@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -52,7 +52,7 @@ public class ObjectShooter : MonoBehaviour {
 	}
 
 	void Update() {
-		if (_controllable && Input.GetKeyDown(KeyCode.Space)) {
+		if (_controllable && Input.GetMouseButtonDown(0)) {
 			Shot ();
 		}
 	}

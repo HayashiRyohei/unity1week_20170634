@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 291826502}
-  m_IndirectSpecularColor: {r: 0.3731148, g: 0.3807389, b: 0.35873505, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731147, g: 0.38073885, b: 0.3587351, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "SPACE\u3067\u5177\u6750\u3092\u843D\u3068\u3059"
+  m_Text: "\u30AF\u30EA\u30C3\u30AF\u3067\u5177\u6750\u3092\u843D\u3068\u3059\uFF01"
 --- !u!222 &1212066184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1667,7 +1667,7 @@ Prefab:
       objectReference: {fileID: 1410767782}
     - target: {fileID: 1299460649059982, guid: 48c6d6111c77e42329058e6f814c1b9d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48c6d6111c77e42329058e6f814c1b9d, type: 2}
