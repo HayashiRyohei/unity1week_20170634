@@ -16,7 +16,8 @@ public class ResultUIIndicator : MonoBehaviour {
 	[SerializeField]
 	private GameObject buns_top;
 
-	private int[] resultNums;
+	[SerializeField]
+	private ResultDataObject resultData;
 
 	#region mono
 	void Start () {
@@ -26,12 +27,6 @@ public class ResultUIIndicator : MonoBehaviour {
 			AudioManager.Instance.PlaySE("se_maoudamashii_system24");
 			SceneManager.LoadScene(0);
 		});
-
-		// ここで評価を入れる(今はランダム)
-		resultNums = new int[10];
-		for (int i = 0; i < resultNums.Length; ++i) {
-			resultNums [i] = Random.Range (0, 4);
-		}
 			
 		StartCoroutine (FoodDrop ());
 	}
@@ -47,8 +42,8 @@ public class ResultUIIndicator : MonoBehaviour {
 		_obj.transform.localPosition = new Vector3 (0, 1010, 0);
 		_obj.transform.localScale = new Vector3 (3, 3, 3);
 		yield return _wait;
-		while (_count < resultNums.Length) {
-			_obj = (GameObject) Instantiate(foods[resultNums[_count]]);
+		while (_count < resultData.resultList.Count) {
+			_obj = (GameObject) Instantiate(foods[resultData.resultList[_count]]);
 			_obj.layer = LayerMask.NameToLayer("TransparentFX");
 			_obj.transform.localPosition = new Vector3 (0, 1010, 0);
 			_obj.transform.localScale = new Vector3 (3, 3, 3);

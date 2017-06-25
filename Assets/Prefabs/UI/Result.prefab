@@ -331,6 +331,7 @@ MonoBehaviour:
   buns_bottom: {fileID: 1566295302695914, guid: 15d7de5f3b2ec4b37a71ee2b41ddb32f,
     type: 2}
   buns_top: {fileID: 1076863157305712, guid: 9d03b58eb127a445c9e93e916de513eb, type: 2}
+  resultData: {fileID: 11400000, guid: 3b9a051a6ebf74b51856d1c48871341d, type: 2}
 --- !u!114 &114495703176155832
 MonoBehaviour:
   m_ObjectHideFlags: 1
