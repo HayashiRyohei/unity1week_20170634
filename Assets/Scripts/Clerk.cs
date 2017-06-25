@@ -30,10 +30,15 @@ public class Clerk : MonoBehaviour {
 	[SerializeField]
 	private Vector3 _topBunsPosition;
 
+	[Header("Result Data")]
+	[SerializeField]
+	private ResultDataObject _resultData;
+
 	private Customer _customer;         //現在の客
 	private BurgerData _burger;         //現在作成中のバーガー
 	private int _foodCnt;               //現在作成中のバーガーの具材の数(バンズを除いたもの)
 	private List<Food> _burgerFoods;    //現在作成中のバーガーの具材の実態 
+	private List<int> _ranks;			//ランク
 
 	private void Awake() {
 		_burgerFoods = new List<Food>();
@@ -140,6 +145,9 @@ public class Clerk : MonoBehaviour {
 				_burgerFoods.Add(InstantiateFood(FoodType.BunsTop, _topBunsPosition));
 				_burger.Add(FoodType.BunsTop, _topBunsPosition.x);
 				int rank = _customer.Evaluate(_burger);
+				if (_resultData) {
+					_resultData.resultList.Add(rank);
+				}
 				if (_emotion) {
 					_emotion.ShowEmotion(rank);
 				}

@@ -437,6 +437,7 @@ MonoBehaviour:
   _foodList: {fileID: 11400000, guid: f9c4a8ac013b541bb9d3a43c16b9922a, type: 2}
   _initBunsPosition: {x: 0, y: 1.4, z: 0}
   _topBunsPosition: {x: 0, y: 2, z: 0}
+  _resultData: {fileID: 11400000, guid: 3b9a051a6ebf74b51856d1c48871341d, type: 2}
 --- !u!1 &413437190
 GameObject:
   m_ObjectHideFlags: 0
