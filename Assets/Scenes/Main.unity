@@ -436,6 +436,7 @@ MonoBehaviour:
   _customerParent: {fileID: 2100055487}
   _foodList: {fileID: 11400000, guid: f9c4a8ac013b541bb9d3a43c16b9922a, type: 2}
   _initBunsPosition: {x: 0, y: 1.4, z: 0}
+  _topBunsPosition: {x: 0, y: 2, z: 0}
 --- !u!1 &413437190
 GameObject:
   m_ObjectHideFlags: 0

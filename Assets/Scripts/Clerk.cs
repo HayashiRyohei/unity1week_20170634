@@ -108,7 +108,7 @@ public class Clerk : MonoBehaviour {
 		_burger.Add(FoodType.BunsBottom, _initBunsPosition.x);
 		//シューターを操作できるように
 		if (_shooter) {
-			_shooter.controllable = false;
+			_shooter.controllable = true;
 		}
 	}
 
@@ -130,20 +130,20 @@ public class Clerk : MonoBehaviour {
 			}
 		}
 		//最後の具材か判定
-		if (_customer.orderFoodCnt >= _foodCnt) {
+		if (_customer.orderFoodCnt <= _foodCnt) {
 			//シューターを操作できないように
 			if (_shooter) {
 				_shooter.controllable = false;
 			}
 			StartCoroutine(Wait(1f, () => {
 				//上のバンズを落として提供する
-				_burgerFoods.Add(InstantiateFood(FoodType.BunsBottom, _topBunsPosition));
-				_burger.Add(FoodType.BunsBottom, _topBunsPosition.x);
+				_burgerFoods.Add(InstantiateFood(FoodType.BunsTop, _topBunsPosition));
+				_burger.Add(FoodType.BunsTop, _topBunsPosition.x);
 				int rank = _customer.Evaluate(_burger);
 				if (_emotion) {
 					_emotion.ShowEmotion(rank);
 				}
-				StartCoroutine(Wait(0.5f, () => {
+				StartCoroutine(Wait(1f, () => {
 					NextCustomer();
 				}));
 			}));
