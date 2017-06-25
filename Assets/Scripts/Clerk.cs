@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Collections;
+using System;
 
 /// <summary>
 /// 店員。客との橋渡し
@@ -24,18 +27,20 @@ public class Clerk : MonoBehaviour {
 	private FoodList _foodList;
 	[SerializeField]
 	private Vector3 _initBunsPosition;
+	[SerializeField]
+	private Vector3 _topBunsPosition;
 
-	private Customer _customer;			//現在の客
-	private BurgerData _burger;			//現在作成中のバーガー
-	private int _foodCnt;				//現在作成中のバーガーの具材の数(バンズを除いたもの)
-	private List<Food> _burgerFoods;	//現在作成中のバーガーの具材の実態 
+	private Customer _customer;         //現在の客
+	private BurgerData _burger;         //現在作成中のバーガー
+	private int _foodCnt;               //現在作成中のバーガーの具材の数(バンズを除いたもの)
+	private List<Food> _burgerFoods;    //現在作成中のバーガーの具材の実態 
 
 	private void Awake() {
 		_burgerFoods = new List<Food>();
 	}
 
 	private void Start() {
-		if(_shooter) {
+		if (_shooter) {
 			_shooter.onShot.RemoveListener(OnShot);
 			_shooter.onShot.AddListener(OnShot);
 		}
@@ -57,6 +62,9 @@ public class Clerk : MonoBehaviour {
 		if (_customerQueue) {
 			if (_customerQueue.HasNext()) {
 				//次の客をさばく
+				if (_customer) {
+					LeaveCustomer();
+				}
 				ComeCustomer(_customerQueue.GetNext());
 			} else {
 				//客がいないので結果発表へ
@@ -65,6 +73,19 @@ public class Clerk : MonoBehaviour {
 		} else {
 			Debug.LogError("Customer Queueへの参照が設定されていません！");
 			return;
+		}
+	}
+
+	/// <summary>
+	/// 客の帰宅
+	/// </summary>
+	private void LeaveCustomer() {
+		//客を削除
+		if (_customer) {
+			Destroy(_customer.gameObject);
+		}
+		for (int i = 0; i < _burgerFoods.Count; ++i) {
+			Destroy(_burgerFoods[i].gameObject);
 		}
 	}
 
@@ -85,6 +106,10 @@ public class Clerk : MonoBehaviour {
 		_burgerFoods.Add(InstantiateFood(FoodType.BunsBottom, _initBunsPosition));
 		_burger = new BurgerData();
 		_burger.Add(FoodType.BunsBottom, _initBunsPosition.x);
+		//シューターを操作できるように
+		if (_shooter) {
+			_shooter.controllable = false;
+		}
 	}
 
 	/// <summary>
@@ -92,20 +117,47 @@ public class Clerk : MonoBehaviour {
 	/// </summary>
 	/// <param name="offset">Offset.</param>
 	/// <param name="food">Food.</param>
-	private void OnShot(float offset, FoodType food) {
+	private void OnShot(float offset, Food food) {
 		_foodCnt++;
-		_burger.Add(food, offset);
+		_burger.Add(food.type, offset);
+		_burgerFoods.Add(food);
 
 		//客に評価させる
-		if(_customer) {
+		if (_customer) {
 			int rank = _customer.Evaluate(_burger);
-			if(_emotion) {
+			if (_emotion) {
 				_emotion.ShowEmotion(rank);
 			}
 		}
 		//最後の具材か判定
 		if (_customer.orderFoodCnt >= _foodCnt) {
-			//上のバンズを落として
+			//シューターを操作できないように
+			if (_shooter) {
+				_shooter.controllable = false;
+			}
+			StartCoroutine(Wait(1f, () => {
+				//上のバンズを落として提供する
+				_burgerFoods.Add(InstantiateFood(FoodType.BunsBottom, _topBunsPosition));
+				_burger.Add(FoodType.BunsBottom, _topBunsPosition.x);
+				int rank = _customer.Evaluate(_burger);
+				if (_emotion) {
+					_emotion.ShowEmotion(rank);
+				}
+				StartCoroutine(Wait(0.5f, () => {
+					NextCustomer();
+				}));
+			}));
+		}
+	}
+
+	/// <summary>
+	/// 待機したのちにイベント実行
+	/// </summary>
+	/// <returns>The wait.</returns>
+	private IEnumerator Wait(float wait, Action callback) {
+		yield return new WaitForSeconds(wait);
+		if (callback != null) {
+			callback.Invoke();
 		}
 	}
 

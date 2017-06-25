@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ObjectShooter : MonoBehaviour {
 
-	public class ShotEvent : UnityEvent<float, FoodType> { }
+	public class ShotEvent : UnityEvent<float, Food> { }
 
 	[SerializeField]
 	float power = 1;
@@ -29,10 +29,19 @@ public class ObjectShooter : MonoBehaviour {
 	private Reel reel;
 
 	private ShotEvent _onShot;
+	private bool _controllable = false;
 
 	public ShotEvent onShot {
 		get {
 			return _onShot;
+		}
+	}
+	public bool controllable {
+		get {
+			return _controllable;
+		}
+		set {
+			_controllable = value;
 		}
 	}
 
@@ -43,7 +52,7 @@ public class ObjectShooter : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.Space)) {
+		if (_controllable && Input.GetKeyDown(KeyCode.Space)) {
 			Shot ();
 		}
 	}
@@ -81,7 +90,7 @@ public class ObjectShooter : MonoBehaviour {
 			foodObj.transform.SetParent (burger);
 
 			// イベント
-			_onShot.Invoke(offset, foodObj.type);
+			_onShot.Invoke(offset, foodObj);
 		}
 	}
 	#endregion
