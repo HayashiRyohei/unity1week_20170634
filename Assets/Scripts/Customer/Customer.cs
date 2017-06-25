@@ -92,9 +92,9 @@ public abstract class Customer : MonoBehaviour {
 
 		//とりあえず決め打ちで
 		int rank = 0;
-		if (sumEval > 2) {
+		if (sumEval > 2.5) {
 			rank = 3;
-		} else if (sumEval > 1.5) {
+		} else if (sumEval > 1.8) {
 			rank = 2;
 		} else if (sumEval > 1.2) {
 			rank = 1;
